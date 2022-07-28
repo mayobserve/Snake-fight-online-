@@ -1,6 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import NotFoundView from '../views/error/NotFoundView.vue'
+import PkIndexView from '../views/pk/PkIndexView.vue'
+import RanklistIndexView from '../views/ranklist/RanklistIndexView.vue'
+import RecordIndexView from '../views/record/RecordIndexView.vue'
+import UserBotIndexView from '../views/user/bot/UserBotIndexView.vue'
+
 
 const routes = [
+  {
+    path: "/",
+    //输入 /时，跳转为 /pk/
+    name: "home",
+    redirect: "/pk/",
+  },
+  {
+    path: "/404/",
+    name: "404",
+    component: NotFoundView,
+    // 对应导入的组件
+  },
+  {
+    path: "/pk/",
+    name: "pk_index",
+    component: PkIndexView,
+  },
+  {
+    path: "/ranklist/",
+    name: "ranklist_index",
+    component: RanklistIndexView,
+  },
+  {
+    path: "/record/",
+    name: "record_index",
+    component: RecordIndexView,
+  },
+  {
+    path: "/user/bot/",
+    name: "user_bot_index",
+    component: UserBotIndexView,
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/404/",
+  },
+
 
 ]
 
