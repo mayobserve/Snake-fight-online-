@@ -76,10 +76,6 @@ export class Snake extends AcGameObject{
            //每个元素向后移动，然后之前害创建了一个蛇头（此时叫下一个点），这样蛇就变长了
         }
 
-        if(!this.gamemap.check_valid(this.next_cell)){
-            //调用父函数的碰撞检测，同时将身体传入
-            this.status = "die";
-        }
     }
 
     update_move(){

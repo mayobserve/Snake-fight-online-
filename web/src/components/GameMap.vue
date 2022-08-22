@@ -9,15 +9,21 @@
 <script>
 import { GameMap } from "@/assets/scripts/GameMap";
 import { ref, onMounted} from 'vue'
+import { useStore} from 'vuex'
 
 export default {
     setup() {
+        const store = useStore();
         let parent = ref(null);
         let canvas = ref(null);
 
         onMounted(() => {//组件 初始运行的调用的函数
-            new GameMap(canvas.value.getContext('2d'), parent.value);
-            //canvas的值还需要用getcontext读取
+            store.commit(
+                "updateGameObject",
+                new GameMap(canvas.value.getContext('2d'), parent.value, store)
+                //canvas的值还需要用getcontext读取
+            );
+            
 
         });
 
